@@ -1,0 +1,6 @@
+.container {
+    background-color: rgb(191, 191, 191);
+    height:100vh;
+    width: 100vw;
+    overflow: hidden;
+}

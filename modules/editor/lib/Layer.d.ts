@@ -1,0 +1,33 @@
+import { fabric } from "fabric";
+import { BehaviorSubject } from "rxjs";
+import { AlignmentType, IPixelDimensions, IPosition, SerializedLayerInfo } from "./Interfaces";
+export default class Layer {
+    fabricRef: fabric.Object;
+    id: string;
+    type: string;
+    _dimensions: BehaviorSubject<IPixelDimensions>;
+    dimensions: import("rxjs").Observable<IPixelDimensions>;
+    _position: BehaviorSubject<IPosition>;
+    position: import("rxjs").Observable<IPosition>;
+    private _opacity;
+    opacity: import("rxjs").Observable<number>;
+    private _rotation;
+    rotation: import("rxjs").Observable<number>;
+    private _flipX;
+    flipX: import("rxjs").Observable<boolean>;
+    private _flipY;
+    flipY: import("rxjs").Observable<boolean>;
+    constructor(obj: fabric.Object, name?: string);
+    private addDimensionsListeners;
+    private addPositionListeners;
+    private addRotationListeners;
+    setPosition(position: IPosition): void;
+    setDimensions(dimensions: IPixelDimensions): void;
+    setRotation(rotation: number): void;
+    setOpacity(opacity: number): void;
+    setFlipX(value: boolean): void;
+    setFlipY(value: boolean): void;
+    selectLayer(): void;
+    align(...alignmentTypes: AlignmentType[]): void;
+    setPropertiesFromSerializedData(data: SerializedLayerInfo): void;
+}

@@ -1,0 +1,32 @@
+import { fabric } from "fabric";
+import FontManager from "./FontManager";
+import { IPixelDimensions, SerializedTextLayerInfo, TextAlignment } from "./Interfaces";
+import Layer from "./Layer";
+export default class TextLayer extends Layer {
+    textRef: fabric.Textbox;
+    private _editing;
+    editing: import("rxjs").Observable<boolean>;
+    private fontManager;
+    constructor(obj: fabric.Object, fontManager: FontManager, name?: string);
+    private setListeners;
+    get fontSize(): number;
+    set fontSize(value: number);
+    get textColor(): string | fabric.Pattern | fabric.Gradient;
+    set textColor(value: string | fabric.Pattern | fabric.Gradient);
+    setDimensions(dimensions: IPixelDimensions): void;
+    get fontWeight(): string | number;
+    set fontWeight(value: string | number);
+    get underline(): boolean;
+    set underline(value: boolean);
+    get italic(): boolean;
+    set italic(value: boolean);
+    get letterSpacing(): number;
+    set letterSpacing(value: number);
+    get lineHeight(): number;
+    set lineHeight(value: number);
+    get fontFamily(): string;
+    set fontFamily(value: string);
+    set textAlign(value: TextAlignment);
+    get textAlign(): TextAlignment;
+    setPropertiesFromSerializedData(data: SerializedTextLayerInfo): void;
+}
